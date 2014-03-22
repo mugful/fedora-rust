@@ -12,12 +12,22 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
+set -exo pipefail
+
+RUST_VERSION=0.9
+
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$DIR"
 
-source variables.sh
+# fetch and extract source
+curl -O "http://static.rust-lang.org/dist/rust-$RUST_VERSION.tar.gz"
+tar -xzf "rust-$RUST_VERSION.tar.gz"
 
-# install
+# build
 pushd "rust-$RUST_VERSION"
+./configure
+make
 make install
 popd
+
+rm -rf "rust-$RUST_VERSION"
