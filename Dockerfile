@@ -13,7 +13,8 @@
 FROM fedora:20
 MAINTAINER Jiri Stransky <jistr@jistr.com>
 
-RUN yum -y install ccache diffutils file gcc gcc-c++ make pandoc perl python valgrind which
+RUN yum -y update; yum clean all
+RUN yum -y install ccache diffutils file gcc gcc-c++ make pandoc perl python valgrind which; yum clean all
 
 ADD rust-build /root/rust-build
 RUN /root/rust-build/build_and_install.sh
