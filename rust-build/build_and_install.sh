@@ -14,7 +14,7 @@
 
 set -exo pipefail
 
-RUST_VERSION=0.9
+RUST_VERSION=0.10
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$DIR"
