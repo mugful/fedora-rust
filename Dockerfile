@@ -20,6 +20,9 @@ RUN yum -y update; yum clean all
 # only needed when building from source
 # RUN yum -y install ccache diffutils file gcc gcc-c++ make pandoc perl python valgrind which; yum clean all
 
+# fundamental packages
+RUN yum -y install gcc make; yum clean all
+
 ADD rust-install /usr/local/share/rust-install
 
 # from source:
