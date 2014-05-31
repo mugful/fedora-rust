@@ -28,4 +28,4 @@ ADD rust-install /usr/local/share/rust-install
 # pre-built:
 RUN /usr/local/share/rust-install/download-and-install.sh
 
-ENTRYPOINT ["/bin/bash"]
+CMD ["/bin/bash"]
