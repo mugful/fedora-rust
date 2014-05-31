@@ -18,12 +18,12 @@ RUN yum -y update; yum clean all
 # only needed when building from source
 # RUN yum -y install ccache diffutils file gcc gcc-c++ make pandoc perl python valgrind which; yum clean all
 
-ADD rust-install /root/rust-install
+ADD rust-install /usr/local/share/rust-install
 
 # from source:
-# RUN /root/rust-install/build-and-install.sh
+# RUN /usr/local/share//build-and-install.sh
 
 # pre-built:
-RUN /root/rust-install/download-and-install.sh
+RUN /usr/local/share/rust-install/download-and-install.sh
 
 ENTRYPOINT ["/bin/bash"]
