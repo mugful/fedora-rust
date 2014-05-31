@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #    Licensed under the Apache License, Version 2.0 (the "License"); you may
 #    not use this file except in compliance with the License. You may obtain
 #    a copy of the License at
@@ -10,20 +12,20 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-FROM fedora:20
-MAINTAINER Jiri Stransky <jistr@jistr.com>
+set -exo pipefail
 
-RUN yum -y update; yum clean all
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd "$DIR"
 
-# only needed when building from source
-# RUN yum -y install ccache diffutils file gcc gcc-c++ make pandoc perl python valgrind which; yum clean all
+RUST_VERSION=$(cat rust-version | tr -d '\n')
 
-ADD rust-install /root/rust-install
+# fetch and extract source
+curl -O "http://static.rust-lang.org/dist/rust-$RUST_VERSION-x86_64-unknown-linux-gnu.tar.gz"
+tar -xzf "rust-$RUST_VERSION-x86_64-unknown-linux-gnu.tar.gz"
 
-# from source:
-# RUN /root/rust-install/build-and-install.sh
+# build
+pushd "rust-$RUST_VERSION-x86_64-unknown-linux-gnu"
+./install.sh
+popd
 
-# pre-built:
-RUN /root/rust-install/download-and-install.sh
-
-ENTRYPOINT ["/bin/bash"]
+rm -rf "rust-$RUST_VERSION-x86_64-unknown-linux-gnu"
