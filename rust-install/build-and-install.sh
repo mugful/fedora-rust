@@ -14,10 +14,10 @@
 
 set -exo pipefail
 
-RUST_VERSION=0.10
-
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$DIR"
+
+RUST_VERSION=$(cat rust-version | tr -d '\n')
 
 # fetch and extract source
 curl -O "http://static.rust-lang.org/dist/rust-$RUST_VERSION.tar.gz"
