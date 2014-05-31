@@ -13,6 +13,8 @@
 FROM fedora:20
 MAINTAINER Jiri Stransky <jistr@jistr.com>
 
+ADD rust-install/rebuild-counter /usr/local/share/rust-install/rebuild-counter
+
 RUN yum -y update; yum clean all
 
 # only needed when building from source
