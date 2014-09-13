@@ -19,13 +19,26 @@ cd "$DIR"
 
 RUST_VERSION=$(cat rust-version | tr -d '\n')
 
-# fetch and extract source
+# fetch and extract rust binary
 curl -O "http://static.rust-lang.org/dist/rust-$RUST_VERSION-x86_64-unknown-linux-gnu.tar.gz"
 tar -xzf "rust-$RUST_VERSION-x86_64-unknown-linux-gnu.tar.gz"
 
-# build
+# install rust
 pushd "rust-$RUST_VERSION-x86_64-unknown-linux-gnu"
 ./install.sh
 popd
 
 rm -rf "rust-$RUST_VERSION-x86_64-unknown-linux-gnu"
+
+
+
+# fetch and extract cargo binary
+curl -O "http://static.rust-lang.org/cargo-dist/cargo-$RUST_VERSION-x86_64-unknown-linux-gnu.tar.gz"
+tar -xzf "cargo-$RUST_VERSION-x86_64-unknown-linux-gnu.tar.gz"
+
+# install cargo
+pushd "cargo-$RUST_VERSION-x86_64-unknown-linux-gnu"
+./install.sh
+popd
+
+rm -rf "cargo-$RUST_VERSION-x86_64-unknown-linux-gnu"
