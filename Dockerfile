@@ -23,6 +23,7 @@ RUN yum -y update; yum clean all
 # fundamental packages
 RUN yum -y install gcc make; yum clean all
 
+ENV LD_LIBRARY_PATH /usr/local/lib
 ADD rust-install /usr/local/share/rust-install
 
 # from source:
