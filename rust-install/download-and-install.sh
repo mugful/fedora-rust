@@ -31,14 +31,15 @@ popd
 rm -rf "rust-$RUST_VERSION-x86_64-unknown-linux-gnu"
 
 
+CARGO_VERSION=nightly
 
 # fetch and extract cargo binary
-curl -O "http://static.rust-lang.org/cargo-dist/cargo-$RUST_VERSION-x86_64-unknown-linux-gnu.tar.gz"
-tar -xzf "cargo-$RUST_VERSION-x86_64-unknown-linux-gnu.tar.gz"
+curl -O "http://static.rust-lang.org/cargo-dist/cargo-$CARGO_VERSION-x86_64-unknown-linux-gnu.tar.gz"
+tar -xzf "cargo-$CARGO_VERSION-x86_64-unknown-linux-gnu.tar.gz"
 
 # install cargo
-pushd "cargo-$RUST_VERSION-x86_64-unknown-linux-gnu"
+pushd "cargo-$CARGO_VERSION-x86_64-unknown-linux-gnu"
 ./install.sh
 popd
 
-rm -rf "cargo-$RUST_VERSION-x86_64-unknown-linux-gnu"
+rm -rf "cargo-$CARGO_VERSION-x86_64-unknown-linux-gnu"
