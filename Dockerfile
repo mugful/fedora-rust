@@ -10,7 +10,7 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-FROM fedora:20
+FROM fedora:21
 MAINTAINER Jiri Stransky <jistr@jistr.com>
 
 ADD rust-install/rebuild-counter /usr/local/share/rust-install/rebuild-counter
@@ -21,7 +21,7 @@ RUN yum -y update; yum clean all
 # RUN yum -y install ccache diffutils file gcc gcc-c++ make pandoc perl python valgrind which; yum clean all
 
 # fundamental packages
-RUN yum -y install gcc make; yum clean all
+RUN yum -y install gcc make tar; yum clean all
 
 ENV LD_LIBRARY_PATH /usr/local/lib
 ADD rust-install /usr/local/share/rust-install
