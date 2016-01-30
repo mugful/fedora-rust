@@ -35,7 +35,7 @@ FROM dockingbay/fedora-rust:nightly
 RUN useradd project -u 1000 -d /home/project -G wheel; passwd --stdin project <<< 'weakpw'
 
 # install dependencies needed for building your project
-RUN yum -y install freetype-devel portaudio-devel SDL2-devel tmux zlib-devel; yum clean all
+RUN dnf -y install freetype-devel portaudio-devel SDL2-devel tmux zlib-devel; dnf clean all
 
 # don't forget LD_LIBRARY_PATH for rustc
 RUN echo -e '\nexport LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib' >> /home/project/.bashrc

@@ -10,18 +10,18 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-FROM fedora:21
+FROM fedora:23
 MAINTAINER Jiri Stransky <jistr@jistr.com>
 
 ADD rust-install/rebuild-counter /usr/local/share/rust-install/rebuild-counter
 
-RUN yum -y update; yum clean all
+RUN dnf -y update; dnf clean all
 
 # only needed when building from source
-# RUN yum -y install ccache diffutils file gcc gcc-c++ make pandoc perl python valgrind which; yum clean all
+# RUN dnf -y install ccache diffutils file gcc gcc-c++ make pandoc perl python valgrind which; dnf clean all
 
 # fundamental packages
-RUN yum -y install gcc make tar; yum clean all
+RUN dnf -y install gcc make tar; dnf clean all
 
 ENV LD_LIBRARY_PATH /usr/local/lib
 ADD rust-install /usr/local/share/rust-install
