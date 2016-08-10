@@ -20,7 +20,7 @@ cd "$DIR"
 RUST_VERSION=$(cat rust-version | tr -d '\n')
 
 # fetch and extract rust binary
-curl -O "http://static.rust-lang.org/dist/rust-$RUST_VERSION-x86_64-unknown-linux-gnu.tar.gz"
+curl -L -O "https://static.rust-lang.org/dist/rust-$RUST_VERSION-x86_64-unknown-linux-gnu.tar.gz"
 tar -xzf "rust-$RUST_VERSION-x86_64-unknown-linux-gnu.tar.gz"
 
 # install rust
@@ -34,7 +34,7 @@ rm -rf "rust-$RUST_VERSION-x86_64-unknown-linux-gnu"
 CARGO_VERSION=nightly
 
 # fetch and extract cargo binary
-curl -O "http://static.rust-lang.org/cargo-dist/cargo-$CARGO_VERSION-x86_64-unknown-linux-gnu.tar.gz"
+curl -L -O "https://static.rust-lang.org/cargo-dist/cargo-$CARGO_VERSION-x86_64-unknown-linux-gnu.tar.gz"
 tar -xzf "cargo-$CARGO_VERSION-x86_64-unknown-linux-gnu.tar.gz"
 
 # install cargo
