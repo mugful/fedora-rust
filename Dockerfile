@@ -18,7 +18,7 @@ ADD rust-install/rebuild-counter /usr/local/share/rust-install/rebuild-counter
 RUN dnf -y update; dnf clean all
 
 # fundamental packages
-RUN dnf -y install gcc make tar; dnf clean all
+RUN dnf -y install file gcc make man sudo tar; dnf clean all
 
 ENV LD_LIBRARY_PATH /usr/local/lib
 ADD rust-install /usr/local/share/rust-install

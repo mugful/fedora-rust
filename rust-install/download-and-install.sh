@@ -14,32 +14,9 @@
 
 set -exo pipefail
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-cd "$DIR"
+cd /root
 
-RUST_VERSION=$(cat rust-version | tr -d '\n')
+curl -O https://static.rust-lang.org/rustup.sh
+chmod a+x rustup.sh
 
-# fetch and extract rust binary
-curl -L -O "https://static.rust-lang.org/dist/rust-$RUST_VERSION-x86_64-unknown-linux-gnu.tar.gz"
-tar -xzf "rust-$RUST_VERSION-x86_64-unknown-linux-gnu.tar.gz"
-
-# install rust
-pushd "rust-$RUST_VERSION-x86_64-unknown-linux-gnu"
-./install.sh
-popd
-
-rm -rf "rust-$RUST_VERSION-x86_64-unknown-linux-gnu"
-
-
-CARGO_VERSION=nightly
-
-# fetch and extract cargo binary
-curl -L -O "https://static.rust-lang.org/cargo-dist/cargo-$CARGO_VERSION-x86_64-unknown-linux-gnu.tar.gz"
-tar -xzf "cargo-$CARGO_VERSION-x86_64-unknown-linux-gnu.tar.gz"
-
-# install cargo
-pushd "cargo-$CARGO_VERSION-x86_64-unknown-linux-gnu"
-./install.sh
-popd
-
-rm -rf "cargo-$CARGO_VERSION-x86_64-unknown-linux-gnu"
+./rustup.sh
