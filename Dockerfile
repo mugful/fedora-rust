@@ -17,17 +17,11 @@ ADD rust-install/rebuild-counter /usr/local/share/rust-install/rebuild-counter
 
 RUN dnf -y update; dnf clean all
 
-# only needed when building from source
-# RUN dnf -y install ccache diffutils file gcc gcc-c++ make pandoc perl python valgrind which; dnf clean all
-
 # fundamental packages
 RUN dnf -y install gcc make tar; dnf clean all
 
 ENV LD_LIBRARY_PATH /usr/local/lib
 ADD rust-install /usr/local/share/rust-install
-
-# from source:
-# RUN /usr/local/share//build-and-install.sh
 
 # pre-built:
 RUN /usr/local/share/rust-install/download-and-install.sh
