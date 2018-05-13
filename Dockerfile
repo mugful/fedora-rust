@@ -10,7 +10,7 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-FROM fedora:25
+FROM fedora:28
 MAINTAINER Jiri Stransky <jistr@jistr.com>
 
 ADD rust-install/rebuild-counter /usr/local/share/rust-install/rebuild-counter
